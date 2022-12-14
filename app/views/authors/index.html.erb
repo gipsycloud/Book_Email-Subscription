@@ -1,8 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Authors</h1>
+<h4>Authors</h4>
 
-<table>
+<div class="">
+  <table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -21,7 +22,7 @@
         <td><%= author.email %></td>
         <td><%= author.phone %></td>
         <td><%= author.address %></td>
-        <td><%= author.photo %></td>
+        <%# <td><%= author.photo ></td> %>
         <td><%= link_to 'Show', author %></td>
         <td><%= link_to 'Edit', edit_author_path(author) %></td>
         <td><%= link_to 'Destroy', author, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -29,6 +30,7 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
 

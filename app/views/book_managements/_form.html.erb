@@ -1,0 +1,53 @@
+<%= form_with(model: book_management, local: true) do |form| %>
+  <% if book_management.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book_management.errors.count, "error") %> prohibited this book_management from being saved:</h2>
+
+      <ul>
+        <% book_management.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= simple_form_for @book_management, html: { class: 'form-horizontal' }  do |f| %>
+    <div class="panel panel-default">
+      <div class="panel-heading no-print">
+        <div class="btn-group">
+          <%= link_to "#{controller_name.humanize()} List", book_managements_path, :class => "btn btn-sm btn-primary" %>
+        </div>
+      </div>
+
+      <form>
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-10">
+            <%= f.input :title, input_html: { class: 'form-control' }, label: false %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Description</label>
+          <div class="col-sm-10">
+            <%= f.input :description, input_html: { class: 'form-control' }, label: false %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Author</label>
+          <div class="col-sm-10">
+            <%= f.association :author, include_blank: false, input_html: { class: 'custom-select' }, label: false %>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-10">
+            <%= f.input :title, input_html: { class: 'form-control' }, label: false %>
+          </div>
+        </div>
+        
+      </form>
+  <% end %>    
+<% end %>

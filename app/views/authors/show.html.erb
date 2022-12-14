@@ -20,9 +20,8 @@
   <%= @author.address %>
 </p>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @author.photo %>
+<p cla>
+  <%= link_to image_tag(@author.author_image, style: 'width: 20%, height: 10%'), authors_path %> 
 </p>
 
 <%= link_to 'Edit', edit_author_path(@author) %> |

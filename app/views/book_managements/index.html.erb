@@ -18,8 +18,8 @@
       <tr>
         <td><%= book_management.title %></td>
         <td><%= book_management.description %></td>
-        <td><%= book_management.author_id %></td>
-        <td><%= book_management.category_id %></td>
+        <td><%= book_management.author.name %></td>
+        <td><%= book_management.category.category_name %></td>
         <td><%= link_to 'Show', book_management %></td>
         <td><%= link_to 'Edit', edit_book_management_path(book_management) %></td>
         <td><%= link_to 'Destroy', book_management, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -22,6 +22,7 @@ class BookManagementsController < ApplicationController
   # POST /book_managements or /book_managements.json
   def create
     @book_management = BookManagement.new(book_management_params)
+    @book_management.book_image.attach(book_management_params[:book_image]) # THIS WAS THE ERROR!!!
 
     respond_to do |format|
       if @book_management.save
@@ -65,6 +66,6 @@ class BookManagementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_management_params
-      params.require(:book_management).permit(:title, :description, :author_id, :category_id, :cover_photo)
+      params.require(:book_management).permit(:title, :description, :author_id, :category_id, :book_image)
     end
 end

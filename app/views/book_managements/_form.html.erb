@@ -24,14 +24,14 @@
         <div class="form-group row">
           <label for="Author" class="col-sm-2 col-form-label">Author</label>
           <div class="col-sm-10">
-            <%= f.association :author, include_blank: false, input_html: { class: 'custom-select' }, label: false %>
+            <%= f.association :author, :collection => Author.all, include_blank: false, label: false, label_method: :name, value_method: :id %>
           </div>
         </div>
 
         <div class="form-group row">
           <label for="Category" class="col-sm-2 col-form-label">Category</label>
           <div class="col-sm-10">
-            <%= f.association :category, include_blank: false, input_html: { class: 'custom-select' }, label: false %>
+            <%= f.association :category, :collection => Category.all, include_blank: false, label: false, label_method: :category_name, value_method: :id %>
           </div>
         </div>
 

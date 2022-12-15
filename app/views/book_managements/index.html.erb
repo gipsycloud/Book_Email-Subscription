@@ -2,7 +2,7 @@
 
 <h1>Book Managements</h1>
 
-<table>
+<%# <table>
   <thead>
     <tr>
       <th>Title</th>
@@ -13,21 +13,31 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody> %>
+  <div class="container">
     <% @book_managements.each do |book_management| %>
-      <tr>
-        <td><%= book_management.title %></td>
-        <td><%= book_management.description %></td>
-        <td><%= book_management.author.name %></td>
-        <td><%= book_management.category.category_name %></td>
-        <td><%= link_to 'Show', book_management %></td>
-        <td><%= link_to 'Edit', edit_book_management_path(book_management) %></td>
-        <td><%= link_to 'Destroy', book_management, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <%= link_to image_tag(book_management.book_image, style: 'width: 200px, height: 120px') %> 
+       <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">Title: <%= book_management.title %></h5>
+          <p class="card-text">Author Name: <%= book_management.author.name %></p>
+          <p class="card-text">Description: <%= book_management.description %></p>
+          <p class="card-text">Category Name: <%= book_management.category.category_name %></p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <%= link_to 'Show', book_management %> |
+              <%= link_to 'Edit', edit_book_management_path(book_management) %> |
+              <%= link_to 'Destroy', book_management, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </li>
+          </ul>
+          <a href="#" class="btn btn-sm btn-primary">Publish</a>
+        </div>
+      </div> 
     <% end %>
-  </tbody>
+    </div>
+  <%# </tbody>
 </table>
 
-<br>
+<br> %>
 
 <%= link_to 'New Book Management', new_book_management_path %>

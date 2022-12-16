@@ -19,10 +19,20 @@ class BookManagementsController < ApplicationController
   def edit
   end
 
+  def publish
+    @book_management = BookManagement.find(params[:book_management_id])
+    @book_management.publish = 1 if @book_management.publish.blank?
+    @book_management.save
+    respond_to do |format|
+      format.html { redirect_to book_managements_url, notice: "Your Book is published." }
+    end
+  end
+
   # POST /book_managements or /book_managements.json
   def create
     @book_management = BookManagement.new(book_management_params)
-    @book_management.book_image.attach(book_management_params[:book_image]) # THIS WAS THE ERROR!!!
+    @book_management.book_image.attach(book_management_params[:book_image])
+    @book_management.published_date = Time.now
 
     respond_to do |format|
       if @book_management.save

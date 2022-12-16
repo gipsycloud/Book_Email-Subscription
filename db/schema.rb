@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2022_12_15_164753) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "published_date"
+    t.integer "publish"
     t.index ["author_id"], name: "index_book_managements_on_author_id"
     t.index ["category_id"], name: "index_book_managements_on_category_id"
   end

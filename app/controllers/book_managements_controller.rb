@@ -19,9 +19,20 @@ class BookManagementsController < ApplicationController
   def edit
   end
 
+  def publish
+    @book_management = BookManagement.find(params[:book_management_id])
+    @book_management.publish = 1 if @book_management.publish.blank?
+    @book_management.save
+    respond_to do |format|
+      format.html { redirect_to book_managements_url, notice: "Your Book is published." }
+    end
+  end
+
   # POST /book_managements or /book_managements.json
   def create
     @book_management = BookManagement.new(book_management_params)
+    @book_management.book_image.attach(book_management_params[:book_image])
+    @book_management.published_date = Time.now
 
     respond_to do |format|
       if @book_management.save
@@ -65,6 +76,6 @@ class BookManagementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_management_params
-      params.require(:book_management).permit(:title, :description, :author_id, :category_id, :cover_photo)
+      params.require(:book_management).permit(:title, :description, :author_id, :category_id, :book_image)
     end
 end

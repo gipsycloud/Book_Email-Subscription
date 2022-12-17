@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :subscribers
+  namespace :api, defaults: { format: 'json' } do
+    resources :subscribe
+  end
   root to: 'authors#index'
   resources :book_managements do
     get 'publish'

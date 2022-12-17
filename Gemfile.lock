@@ -77,6 +77,8 @@ GEM
     crass (1.0.6)
     date (3.3.1)
     erubi (1.11.0)
+    faker (2.22.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -232,6 +234,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
+  faker (~> 2.10)
   jbuilder (~> 2.7)
   listen (~> 3.2)
   meta_request

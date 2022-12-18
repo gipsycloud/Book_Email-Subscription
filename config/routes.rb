@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root to: 'authors#index'
   resources :book_managements do
     get 'publish'
+    get "download_pdf"
   end
   resources :categories
   resources :authors

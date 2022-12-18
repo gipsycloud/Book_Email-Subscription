@@ -26,11 +26,16 @@
 </p>
 
 <p>
+  <strong>PDF Download:</strong>
+  <%= link_to book_management_download_pdf_path(@book_management), type: "application/pdf" do %>
+    <%= @book_management.pdf_attachment %>
+  <% end %>
+</p>
+
+<p>
   <strong>Cover Photo:</strong>
   <%= link_to image_tag(@book_management.book_image, style: 'width: 20%, height: 10%') %> 
 </p>
-
-
 
 <%= link_to 'Edit', edit_book_management_path(@book_management) %> |
 <%= link_to 'Back', book_managements_path %>

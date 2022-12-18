@@ -20,12 +20,25 @@ class BookManagementsController < ApplicationController
   end
 
   def publish
-    @book_management = BookManagement.find(params[:book_management_id])
-    @book_management.publish = 1 if @book_management.publish.blank?
-    @book_management.save
+    book_management = BookManagement.find(params[:book_management_id])
+    book_management.publish = 1 if book_management.publish.blank?
+    book_management.save
+    SubscriberMailer.with(book_management: book_management).subscriber_mailer.deliver_later
     respond_to do |format|
+      # SubscriberJob.perform_later params.permit(:message)[:message]
       format.html { redirect_to book_managements_url, notice: "Your Book is published." }
     end
+  end
+
+  def download_pdf
+    book_management = BookManagement.find(params[:book_management_id])
+    file_name = book_management.pdf_attachment.to_s
+    @filedir = "#{Rails.root}/public#{file_name}"
+    send_file(
+      @filedir,
+      type: "application/pdf",
+      disposition: 'pdf_attachment'
+    )
   end
 
   # POST /book_managements or /book_managements.json
@@ -76,6 +89,6 @@ class BookManagementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_management_params
-      params.require(:book_management).permit(:title, :description, :author_id, :category_id, :book_image)
+      params.require(:book_management).permit(:title, :description, :author_id, :category_id, :book_image, :pdf_attachment)
     end
 end

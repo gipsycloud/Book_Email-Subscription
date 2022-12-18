@@ -10,3 +10,4 @@ Things you may want to cover:
 #   rails db:migrate
 #   rails db:seed
 #   yarn add bootstrap jquery popper.js
+#   http://localhost:3000/api/subscribe

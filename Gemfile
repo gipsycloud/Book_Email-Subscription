@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem "net-http"
 gem 'simple_form'
+gem 'faker', '~> 2.10'
+gem 'carrierwave', '~> 0.11.2'
 # gem 'bootstrap', '~> 4.0.0'
 # gem 'jquery-rails'
 

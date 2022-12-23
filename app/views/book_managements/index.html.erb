@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'New Book Management', new_book_management_path, class: 'btn btn-sm btn-primary mb-3' %>
+
+  <div class="container">
+    <div class="row">
+        <% @book_managements.each do |book_management| %>
+          <div class="col-sm">
+            <div class="card mt-3" style="width: 18rem;">
+              <%= link_to image_tag(book_management.book_image, class: 'mx-auto d-block img-fluid pt-4') %> 
+              <div class="card-body">
+                <h5 class="card-title">Title: <%= book_management.title %></h5>
+                <p class="card-text">Author Name: <%= book_management.author.name %></p>
+                <p class="card-text">Description: <%= book_management.description %></p>
+                <p class="card-text">Category Name: <%= book_management.category.category_name %></p>
+                <p class="card-text">Publish Date: <%= book_management.published_date %></p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <%= link_to 'Show', book_management %> |
+                    <%= link_to 'Edit', edit_book_management_path(book_management) %> |
+                    <%= link_to 'Destroy', book_management, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </li>
+                </ul >
+                <div class="card-footer">
+                  <% if book_management.publish == 1 %>
+                    <h5>Published</h5>
+                  <% else %>  
+                    <%= link_to "Publish", book_management_publish_url(book_management), class: 'btn btn-sm btn-primary' %>
+                  <% end %>
+                </div>
+              </div>
+            </div> 
+          </div>
+        <% end %>
+    </div>
+  </div>

@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+<%= link_to 'New Category', new_category_path, class: 'btn btn-sm btn-primary mb-3' %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Category name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.category_name %></td>
+        <td><%= link_to 'Show', category, class: 'btn btn-sm btn-primary' %></td>
+        <td><%= link_to 'Edit', edit_category_path(category), class: 'btn btn-sm btn-success' %></td>
+        <td><%= link_to 'Destroy', category, method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

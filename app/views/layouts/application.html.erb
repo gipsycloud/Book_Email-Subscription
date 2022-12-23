@@ -9,7 +9,42 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <%# <a class="navbar-brand" href="#">Navbar</a> %>
+      <% if user_signed_in? %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="navbar-nav">
+            <%= link_to 'Author', authors_path, class: 'nav-link' %>
+          </li>
+          <li class="navbar-nav">
+            <%= link_to 'Category', categories_path, class: 'nav-link' %>
+          </li>
+          <li class="navbar-nav">
+            <%= link_to 'Book Management', book_managements_path, class: 'nav-link' %>
+          </li>
+          <li class="navbar-nav">
+            <%= link_to 'Subscribe Members', subscribers_path, class: 'nav-link' %>
+          </li>
+          <li class="navbar-nav">
+            Logged in as <strong><%= current_user.email %></strong>
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+            <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, :class => 'navbar-link' %>
+          </li>
+        </ul>
+      </div>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+      <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>

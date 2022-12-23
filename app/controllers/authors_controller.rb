@@ -8,6 +8,7 @@ class AuthorsController < ApplicationController
 
   # GET /authors/1 or /authors/1.json
   def show
+
   end
 
   # GET /authors/new
@@ -65,6 +66,6 @@ class AuthorsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def author_params
-      params.require(:author).permit(:name, :email, :phone, :address, :photo)
+      params.require(:author).permit(:name, :email, :phone, :address, :author_image)
     end
 end

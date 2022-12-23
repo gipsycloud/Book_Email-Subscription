@@ -25,6 +25,7 @@ gem "net-http"
 gem 'simple_form'
 gem 'faker', '~> 2.10'
 gem 'carrierwave', '~> 0.11.2'
+gem 'devise', '~> 4.8', '>= 4.8.1'
 # gem 'bootstrap', '~> 4.0.0'
 # gem 'jquery-rails'
 

@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
+    root "tasks#index"
+  resources :tasks
+  resources :projects
   resources :subscribers
   namespace :api, defaults: { format: 'json' } do
     resources :subscribe
   end
-  root to: 'authors#index'
+  # root to: 'authors#index'
   resources :book_managements do
     get 'publish'
     get "download_pdf"

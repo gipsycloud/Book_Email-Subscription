@@ -1,4 +1,5 @@
 class BookManagementsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_book_management, only: %i[ show edit update destroy ]
 
   # GET /book_managements or /book_managements.json

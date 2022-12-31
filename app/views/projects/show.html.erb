@@ -17,7 +17,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @project.user_id %>
+  <%= @project.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |

@@ -1,8 +1,30 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+
+  # root "projects#index"
+
+  resources :projects do
+    resources :tasks
+  end
+
+  authenticate :user, lambda { |u| u.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   devise_for :users
-    root "tasks#index"
-  resources :tasks
-  resources :projects
+  devise_scope :user do
+    authenticated :user do
+      root to: "authors#index"
+    end
+
+    unauthenticated do
+      root to: "home#index", as: :unauthenticated_root
+    end
+  end
+
+  
+
   resources :subscribers
   namespace :api, defaults: { format: 'json' } do
     resources :subscribe

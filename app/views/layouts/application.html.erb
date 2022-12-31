@@ -6,15 +6,15 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render partial: 'template/alerts' %>
     
+  <% if user_signed_in? %>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <% if user_signed_in? %>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -33,6 +33,9 @@
           <li class="nav-item">
             <%= link_to 'Subscribe Members', subscribers_path, class: 'nav-link' %>
           </li>
+          <li class="nav-item">
+            <%= link_to 'Projects', projects_path, class: 'nav-link' %>
+          </li>
         </ul>
         <ul class="navbar-nav justify-content-end">
           <%# <strong><%= current_user.email ></strong> %>
@@ -44,11 +47,11 @@
           </li>
         </ul>
       </div>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'nav-link'  %>
-      <% end %>
     </nav>
+    <% else %>
+      <%#= link_to "Sign up", new_user_registration_path, :class => 'nav-link'  %>
+      <%#= link_to "Login", new_user_session_path, :class => 'nav-link'  %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

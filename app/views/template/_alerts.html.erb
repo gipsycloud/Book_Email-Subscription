@@ -1,0 +1,21 @@
+<% if notice %>
+    <div class="col-sm-4 col-md-4 custom_error_message">
+      <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" aria-hidden="true">×</button>
+          <span class="glyphicon glyphicon-info-sign"></span> 
+          <strong><%= notice %></strong>
+          <!-- <hr class="message-inner-separator"> -->
+      </div>
+    </div>
+<% end %>
+
+<% if alert %>
+    <div class="col-sm-4 col-md-4 custom_error_message">
+      <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" aria-hidden="true">×</button>
+          <span class="glyphicon glyphicon-info-sign"></span> 
+          <strong><%= alert %></strong>
+          <!-- <hr class="message-inner-separator"> -->
+      </div>
+    </div>
+<% end %>

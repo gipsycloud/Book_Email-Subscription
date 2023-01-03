@@ -4,20 +4,13 @@
   <strong>Title:</strong>
   <%= @project.title %>
 </p>
+<%# <% if @project.author(current_user) %>
+  <%#= link_to 'Edit Project'. edit_project_path(@project), class: "underline" %>
+<%# end %>
 
 <p>
   <strong>Description:</strong>
   <%= @project.description %>
-</p>
-
-<p>
-  <strong>Text:</strong>
-  <%= @project.text %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @project.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |

@@ -51,6 +51,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'meta_request'
+  gem 'solargraph'
+  gem 'rubocop'
 end
 
 group :test do
